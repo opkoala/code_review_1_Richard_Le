@@ -56,25 +56,4 @@ await collection1.insertMany([data]);
     res.redirect("/");
 })
 
-// Handle login
-app.post("/login",async (req,res) =>{
-
-const data={
-    email:req.body.email,
-    password:req.body.password,
-
-}
-
-const user = await collection1.findOne({ email: data.email, password: data.password });
-
-    if (user) {
-        res.render("home",  { firstname: user.firstname })
-    } else {
-        res.send("Invalid email or password");
-    }
-})
-
-app.listen(3131,() => {
-    console.log("port connected")
-});
 
